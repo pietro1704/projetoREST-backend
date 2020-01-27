@@ -2,7 +2,7 @@ const NoteModel = require('../models/noteModel')
 
 
 const helloWorld = async (req, res) => {
-    res.send('Hello catapimbas')
+    return('Hello World caralho')
 }
 
 const getAll = async (request, h) => {
