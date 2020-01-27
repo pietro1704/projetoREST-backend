@@ -12,5 +12,5 @@ const uri =
 mongoose.connect(uri, {
         useNewUrlParser: true,
     },
-    () => console.log('connected to db')
+    () => console.log('connected to db on ' + uri)
 )

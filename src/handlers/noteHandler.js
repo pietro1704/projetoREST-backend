@@ -5,15 +5,13 @@ const helloWorld = async (req, res) => {
     res.send('Hello catapimbas')
 }
 
-const getAll = async (request, h) => {
-    console.log('entrei na funcao getALL')
-    const notes = await noteModel.find({})
-    console.log('notes = ' + notes)
-    return notes
+const getAll = (request, h) => {
+    return 'getAll'
 }
 
 const addNote = (req, res) => {
-console.log('nota--------> ' + req.body)
+    return 'OI'
+    console.log('nota--------> ' + req.body)
     const note = new noteModel({
         title: req.body.title,
         content: req.body.content,
