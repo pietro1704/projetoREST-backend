@@ -7,7 +7,8 @@ const PORT = process.env.PORT || 3000
 const routes = require('./routes')
 
 app.use(routes)
-app.use(bodyParser())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 app.use(express.json({
     extended: false
 }));

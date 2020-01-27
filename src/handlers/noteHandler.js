@@ -12,19 +12,16 @@ const getAll = async (request, h) => {
     return notes
 }
 
-const addNote = async (req, res) => {
-    res.send(req.body)
-    const {
-        title,
-        content
-    } = req.body
+const addNote = (req, res) => {
+console.log('nota--------> ' + req.body)
+    const note = new noteModel({
+        title: req.body.title,
+        content: req.body.content,
+        date: Date.now()
+    })
 
-    const note = new noteModel
-    note.title = title
-    note.content = content
-    note.date = Date.now()
 
-    await note.save()
+ note.save()
 
     return res.response(note).code(201)
 }

@@ -4,6 +4,8 @@ const mongoose = require('mongoose')
 const url = '10.40.48.163'//url mac lab
 
 mongoose.connect(url,
-    { useNewUrlParser: true },
+    {
+        useNewUrlParser: true,
+    },
     () => console.log('connected to db')
 )

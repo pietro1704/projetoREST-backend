@@ -1,8 +1,7 @@
 const mongoose = require('mongoose')
 
-const Schema = mongoose.Schema
-
-const NoteModel = new Schema({
+const NoteModel = mongoose.Schema({
+    _id: mongoose.Types.ObjectId,
     title: String,
     content: String,
     date: Date
