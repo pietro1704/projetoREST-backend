@@ -1,10 +1,21 @@
-const express = require('express')
-const router = express.Router()
+//importa as handlers do product.js
 const noteHandler = require('./handlers/noteHandler')
 
-router.route('/').get(noteHandler.helloWorld)
-router.route('/all').get(noteHandler.getAll)
-router.route('/add').post(noteHandler.addNote)
-
-
-module.exports = router
+module.exports = [
+    {
+        method: 'GET',
+        path: '/',
+        handler: noteHandler.helloWorld
+        
+    },
+    {
+        method: 'GET',
+        path: '/all',
+        handler: noteHandler.getAll
+    },
+     {
+         method: 'POST',
+         path: '/',
+         handler: noteHandler.addNote
+     }
+]

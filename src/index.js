@@ -1,17 +1,23 @@
 require('./services/mongo')
-const express = require('express')
-var bodyParser = require('body-parser');
-const app = express()
-
-const PORT = process.env.PORT || 3000
+const Hapi = require('@hapi/hapi')
 const routes = require('./routes')
 
-app.use(routes)
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
-app.use(express.json({
-    extended: false
-}));
+const init = async () => {
+    const server = Hapi.server({
+        port: process.env.PORT || 3000,
+        host: process.env.HOST || 'localhost'
+    })
+
+    server.route(routes)
 
 
-app.listen(PORT, ()=> console.log('escutando na porta ' + PORT))
+    await server.start()
+    console.log('Server running on %s', server.info.uri)
+}
+
+
+process.on('unhandledRejection', (err) => {
+    console.log(err)
+    process.exit(1)
+})
+init()
