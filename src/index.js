@@ -5,7 +5,7 @@ const routes = require('./routes')
 const init = async () => {
     const server = Hapi.server({
         port: process.env.PORT || 3000,
-        host: process.env.URL || 'localhost'
+        //host: 'projetojs.herokuapp.com' || 'localhost'
     })
 
     server.route(routes)
