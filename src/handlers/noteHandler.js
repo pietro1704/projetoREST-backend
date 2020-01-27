@@ -6,8 +6,9 @@ const helloWorld = async (req, res) => {
 }
 
 const getAll = async (request, h) => {
-    const notes = await noteModel.find({})
     console.log('entrei na funcao getALL')
+    const notes = await noteModel.find({})
+    console.log('notes = ' + notes)
     return notes
 }
 
@@ -25,7 +26,7 @@ const addNote = async (req, res) => {
 
     await note.save()
 
-    return res.response(product).code(201)
+    return res.response(note).code(201)
 }
 
 module.exports = {
