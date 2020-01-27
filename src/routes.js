@@ -26,6 +26,6 @@ module.exports = [
     {
         method: 'DELETE',
         path: '/{id}',
-        handler: noteHandler.delete
+        handler: noteHandler.remove
     }
 ]
