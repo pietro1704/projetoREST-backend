@@ -9,7 +9,7 @@ const transformer = note => ({
         date: note.date
     },
     links: {
-        self: `/${product.id}`
+        self: `/${note.id}`
     }
 });
 
@@ -36,7 +36,7 @@ const addNote = async (req, res) => {
 
     await note.save()
 
-    return res.response(transformer(note)).code(201)
+    return res.response(transformer(note)).code(201)//created
 }
 
 const find = async(req, res) =>{
@@ -48,7 +48,7 @@ const find = async(req, res) =>{
      await NoteModel.findOneAndDelete({
          _id: req.params.id
      })
-     return res.response().code(204)
+     return res.response().code(204)//no content
  }
 
 module.exports = {
