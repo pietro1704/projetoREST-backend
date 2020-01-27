@@ -1,5 +1,18 @@
 const NoteModel = require('../models/noteModel')
 
+const transformer = note => ({
+    type: 'notes',
+    id: note.id,
+    attributes: {
+        title: note.title,
+        content: note.content,
+        date: note.date
+    },
+    links: {
+        self: `/${product.id}`
+    }
+});
+
 
 const helloWorld = async (req, res) => {
     return('Hello World caralho')
@@ -7,10 +20,10 @@ const helloWorld = async (req, res) => {
 
 const getAll = async (request, h) => {
     const notes = await NoteModel.find({})
-    return notes
+    return notes.map(transformer)
 }
 
-const addNote = (req, res) => {
+const addNote = async (req, res) => {
     const {
         title,
         content,
@@ -21,15 +34,27 @@ const addNote = (req, res) => {
     note.content = content
     note.date = Date.now()
 
-    console.log('nota-> ' + note )
+    await note.save()
 
-    note.save()
-
-    return res.response(note).code(201)
+    return res.response(transformer(note)).code(201)
 }
+
+const find = async(req, res) =>{
+    const product = await NoteModel.findByIdAndUpdate(req.params.id)
+    return {data: transformer(note)}
+ }
+ 
+ const remove = async (req, res) => {
+     await NoteModel.findOneAndDelete({
+         _id: req.params.id
+     })
+     return res.response().code(204)
+ }
 
 module.exports = {
     helloWorld,
     getAll,
-    addNote
+    addNote,
+    find,
+    remove
 }

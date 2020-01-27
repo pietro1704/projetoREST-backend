@@ -4,18 +4,28 @@ const noteHandler = require('./handlers/noteHandler')
 module.exports = [
     {
         method: 'GET',
-        path: '/',
+        path: '/helloWorld',
         handler: noteHandler.helloWorld
         
     },
     {
         method: 'GET',
-        path: '/all',
+        path: '/',
         handler: noteHandler.getAll
     },
      {
          method: 'POST',
          path: '/',
          handler: noteHandler.addNote
-     }
+     },
+     {
+        method: 'GET',
+        path: '/{id}',
+        handler: noteHandler.find
+    },
+    {
+        method: 'DELETE',
+        path: '/{id}',
+        handler: noteHandler.delete
+    }
 ]
