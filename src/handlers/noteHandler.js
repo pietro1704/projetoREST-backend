@@ -40,7 +40,7 @@ const addNote = async (req, res) => {
 }
 
 const find = async(req, res) =>{
-    const product = await NoteModel.findByIdAndUpdate(req.params.id)
+    const note = await NoteModel.findByIdAndUpdate(req.params.id)
     return {data: transformer(note)}
  }
  
