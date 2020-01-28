@@ -9,7 +9,7 @@ const transformer = note => ({
         date: note.date
     },
     links: {
-        self: `/${note.id}`
+        link: `/${note.id}`
     }
 });
 
