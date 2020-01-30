@@ -10,22 +10,22 @@ module.exports = [
     },
     {
         method: 'GET',
-        path: '/',
+        path: '/notes',
         handler: noteHandler.getAll
     },
      {
          method: 'POST',
-         path: '/',
+         path: '/notes',
          handler: noteHandler.addNote
      },
      {
         method: 'GET',
-        path: '/{id}',
+        path: '/notes/{id}',
         handler: noteHandler.find
     },
     {
         method: 'DELETE',
-        path: '/{id}',
+        path: '/notes/{id}',
         handler: noteHandler.remove
     }
 ]
